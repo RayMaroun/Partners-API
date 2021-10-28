@@ -1,0 +1,34 @@
+{
+  "name": "partners-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.ts",
+  "scripts": {
+    "start": "yarn run build && node --unhandled-rejections=strict ./dist/app.js",
+    "start-docker": "node --unhandled-rejections=strict app.js",
+    "cp-resources": "cp .env.local ./dist/.env.local | true && cp -r assets/ dist/assets && cp -r ./swagger ./dist/swagger",
+    "build": "rm -rf ./dist/ && tsc -P tsconfig.json && tsc  && yarn run cp-resources",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint -c tslint.json source/**/*.{ts,tsx} --fix --format verbose",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.14",
+    "reflect-metadata": "^0.1.13",
+    "swagger-express-ts": "^1.1.0",
+    "swagger-ui-dist": "^3.52.5",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.4.4"
+  }
+}

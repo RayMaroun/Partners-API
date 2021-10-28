@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+      "target": "ES2016",
+      "outDir": "./dist",
+      "allowJs": true,
+      "esModuleInterop": true,
+      "strict": true,
+      "inlineSourceMap": true,
+      "forceConsistentCasingInFileNames": true,
+      "noFallthroughCasesInSwitch": true,
+      "module": "CommonJS",
+      "moduleResolution": "Node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "declaration": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "types": ["reflect-metadata", "swagger-express-ts"],
+      // "baseUrl": "./source/",
+    },
+    "include": ["source/**/*", "./app.ts"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
+  }
+  
