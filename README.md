@@ -1,5 +1,7 @@
 # Partners API
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=RayMaroun_Partners-API&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=RayMaroun_Partners-API)
+
 This project is a simple but powerful API to manage partners.
 
 ## Features
