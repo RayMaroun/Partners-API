@@ -6,24 +6,38 @@ import morgan from 'morgan';
 import { configureExpressApp } from './source/swagger-config';
 import { CommonRoutesConfig } from './source/common/common.routes.config';
 import { PartnersRoutes } from './source/routes/partners.routes.config';
+import app from './server';
+import logger from './logger';
 
-const router: Express = express();
-const app: express.Application = express();
+//const app: express.Application = express();
 const routes: Array<CommonRoutesConfig> = [new PartnersRoutes(app)];
 
 
+/**
+ * This is a bootstrap function
+ */
+ async function bootstrap() {
+    // Attach HTTP request info logger middleware in test mode
+    if (process.env.NODE_ENV === 'test') {
+      app.use((req: express.Request, _res, next) => {
+        logger.debug(`[${req.method}] ${req.hostname}${req.url}`);
+
+        next();
+      });
+    }
+    
 /** Logging */
-router.use(morgan('dev'));
+app.use(morgan('dev'));
 /** Parse the request */
-router.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 /** Takes care of JSON data */
-router.use(express.json());
+app.use(express.json());
 
 /** Configuration */
 configureExpressApp(app);
 
 /** RULES OF OUR API */
-router.use((req, res, next) => {
+app.use((req, res, next) => {
     // set the CORS policy
     res.header('Access-Control-Allow-Origin', '*');
     // set the CORS headers
@@ -35,15 +49,17 @@ router.use((req, res, next) => {
     }
     next();
 });
+ }
 
-/** Server */
-const httpServer = http.createServer(app);
-const PORT: any = process.env.PORT ?? 6060;
 
-httpServer.listen(PORT, () => {
-    routes.forEach((route) => {
-        route.configureRoutes();
-    });
+// Need for integration testing
+export default app;
 
-    console.log(`Server is running on port: ${PORT}`);
-});
+// Invoking the bootstrap function
+bootstrap()
+  .then(() => {
+    logger.info('Server is up');
+  })
+  .catch((error) => {
+    logger.error('Unknown error. ' + error.message);
+  });

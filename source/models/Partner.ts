@@ -49,6 +49,10 @@ export class Partner {
   })
   services: string = '';
   
+  @ApiModelProperty({
+    description: 'Array of offices',
+    required: true,
+  })
   offices: Office[] = [];
 
   constructor(

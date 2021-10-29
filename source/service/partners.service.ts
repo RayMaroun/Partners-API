@@ -2,7 +2,7 @@ import { PartnerDTO } from '../dto/partner.dto';
 import { IPartnersService } from '../interfaces/IPartnersService';
 import { IPartnersRepository } from '../interfaces/IPartnersRepository';
 import { Partner } from '../models/Partner';
-import { PartnersRepository } from '../repository/partner.repository';
+import { PartnersRepository } from '../repository/partners.repository';
 
 /**
  * The actual class that contains all the business logic related to partners.

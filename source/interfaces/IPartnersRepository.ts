@@ -16,7 +16,7 @@ export interface IPartnersRepository extends IRepository<Partner> {
    getPartnerById(id: number): Partner;
 
    /**
-    * Get documents from collection.
+    * Get partners from file.
     *
     * @param range Range to search in
     * @param coordinates Coordinates to filter on

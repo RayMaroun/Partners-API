@@ -15,7 +15,7 @@
       "declaration": true,
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
-      "types": ["reflect-metadata", "swagger-express-ts"],
+      "types": ["reflect-metadata", "swagger-express-ts","jest"],
       // "baseUrl": "./source/",
     },
     "include": ["source/**/*", "./app.ts"],
