@@ -36,8 +36,7 @@ export class PartnersRepository implements IPartnersRepository {
   }
 
   public getPartnerById(id: number): Partner {
-    let partner = this.partnersList.filter(partner => partner.id === id)[0];
-    return partner;
+    return this.partnersList.filter(selectedPartner => selectedPartner.id === id)[0];
   }
 
   public getPartners(range: number, coordinates: string): PartnerDTO[] {
@@ -59,8 +58,8 @@ export class PartnersRepository implements IPartnersRepository {
       (partner, i, arr) => arr.findIndex(t => t.id === partner.id) === i
     );
 
-    var sortedPartners = distinctPartners.sort((a, b) => (a.organization < b.organization ? -1 : 1));
-    sortedPartners.forEach(sortedPartner => {
+    distinctPartners.sort((a, b) => (a.organization < b.organization ? -1 : 1));
+    distinctPartners.forEach(sortedPartner => {
       let partnerBasicInfo: PartnerDTO = new PartnerDTO();
       partnerBasicInfo.id = sortedPartner.id;
       partnerBasicInfo.organization = sortedPartner.organization;

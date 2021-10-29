@@ -23,5 +23,4 @@ export class PartnerDTO {
     required: true,
   })
   locations: string = '';
-constructor(){}
 }

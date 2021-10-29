@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config({ path: '.env.local' });
-import http from 'http';
-import express, { Express } from 'express';
+import express from 'express';
 import morgan from 'morgan';
 import { configureExpressApp } from './source/swagger-config';
 import { CommonRoutesConfig } from './source/common/common.routes.config';
@@ -9,7 +8,6 @@ import { PartnersRoutes } from './source/routes/partners.routes.config';
 import app from './server';
 import logger from './logger';
 
-//const app: express.Application = express();
 const routes: Array<CommonRoutesConfig> = [new PartnersRoutes(app)];
 
 
