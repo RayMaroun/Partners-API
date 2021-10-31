@@ -5,7 +5,7 @@
   "main": "app.ts",
   "scripts": {
     "start": "yarn run build && NODE_ENV=Development node --unhandled-rejections=strict ./dist/app.js",
-    "start-docker": "node --unhandled-rejections=strict app.js",
+    "start-docker": "set NODE_ENV=dev node --unhandled-rejections=strict app.js",
     "cp-resources": "cp .env.local ./dist/.env.local | true && cp -r assets/ dist/assets && cp -r ./swagger ./dist/swagger && cp -r ./test ./dist/test",
     "build": "rm -rf ./dist/ && tsc -P tsconfig.json && tsc  && yarn run cp-resources",
     "test": "NODE_ENV=test jest --forceExit --silent ./dist/test",

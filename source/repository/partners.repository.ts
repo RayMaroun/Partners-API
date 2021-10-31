@@ -79,7 +79,8 @@ export class PartnersRepository implements IPartnersRepository {
 
     return partnersBasicInfo;
   }
-
+  
+  //#region Calculate distance between coordinates
   /**
    * Convert degrees to radius
    * @param deg Value to convert
@@ -117,4 +118,5 @@ export class PartnersRepository implements IPartnersRepository {
     var km = d / 1000;
     return parseFloat(km.toFixed(1));
   }
+  //#endregion
 }

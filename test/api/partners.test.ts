@@ -4,6 +4,7 @@ import app from '../../app';
 
 describe('Partners', () => {
 
+  //#region Get Partner Test
   describe('Get Partner', () => {
 
     test('response 200 if successfully get partner by id', async () => {
@@ -20,7 +21,9 @@ describe('Partners', () => {
       assert.equal(res.body.errors[0].detail, 'Invalid Partner Id');
     });
   });
+  //#endregion
 
+  //#region Get Partner list
   describe('Get Partners List', () => {
 
     test('response 200 if successfully get all partners list', async () => {
@@ -49,4 +52,5 @@ describe('Partners', () => {
       assert.equal(res.body.errors[0].detail, 'Invalid Coordinates');
     });
   });
+  //#endregion
 });

@@ -28,6 +28,10 @@ This project is a simple but powerful API to manage partners.
 - [express](https://github.com/expressjs/express)
 - [Typescript 4+](https://www.typescriptlang.org/)
 
+## Docker
+
+- [Partners API Container](https://hub.docker.com/r/raymaroun/partners-api)
+
 ## Set up
 
 1 - Clone this project running `git clone https://github.com/RayMaroun/Partners-API.git` in your terminal. If you haven't git installed can simply download it and unzip it.

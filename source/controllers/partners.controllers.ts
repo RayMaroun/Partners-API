@@ -20,7 +20,7 @@ class PartnersController {
     this.getPartners = this.getPartners.bind(this)
     this.get = this.get.bind(this);
   }
-
+  //#region Get list of partners
   @ApiOperationGet({
     description: 'Gets the list of partners for the given range & coordinates',
     parameters: {
@@ -112,7 +112,9 @@ class PartnersController {
 
     }
   }
+  //#endregion
 
+  //#region Get partner by id
   @ApiOperationGet({
     description: 'Gets partner by id',
     path: '/{partnerId}',
@@ -174,6 +176,7 @@ class PartnersController {
     }
 
   }
+  //#endregion
 }
 
 export default new PartnersController();
