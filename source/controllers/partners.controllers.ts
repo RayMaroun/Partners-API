@@ -57,8 +57,8 @@ class PartnersController {
   public getPartners(req: ExpressRequest, res: ExpressResponse): void {
     let range;
     let coordinates;
-    let httpErrors: APIErrorResponse = new APIErrorResponse();
-    let APIerror: APIError = new APIError();
+    let httpErrorsGetPartners: APIErrorResponse = new APIErrorResponse();
+    let apiErrorGetPartners: APIError = new APIError();
 
     if (!req.query.range && !req.query.coordinates) {
       range = 0;
@@ -68,10 +68,10 @@ class PartnersController {
 
       if (!req.query.range || isNaN(Number(req.query.range))) {
         logger.error(`${req.method} ${req.path}: Invalid Range`);
-        APIerror.status = "400";
-        APIerror.detail = "Invalid Range";
-        httpErrors.errors.push(APIerror);
-        res.status(400).send(httpErrors);
+        apiErrorGetPartners.status = "400";
+        apiErrorGetPartners.detail = "Invalid Range";
+        httpErrorsGetPartners.errors.push(apiErrorGetPartners);
+        res.status(400).send(httpErrorsGetPartners);
         return;
       }
       else {
@@ -80,10 +80,10 @@ class PartnersController {
 
       if (!(String(req.query.coordinates).length > 0 && String(req.query.coordinates).indexOf(',') > -1)) {
         logger.error(`${req.method} ${req.path}: Invalid Coordinates`);
-        APIerror.status = "400";
-        APIerror.detail = "Invalid Coordinates";
-        httpErrors.errors.push(APIerror);
-        res.status(400).send(httpErrors);
+        apiErrorGetPartners.status = "400";
+        apiErrorGetPartners.detail = "Invalid Coordinates";
+        httpErrorsGetPartners.errors.push(apiErrorGetPartners);
+        res.status(400).send(httpErrorsGetPartners);
         return;
       }
       else {
@@ -98,11 +98,10 @@ class PartnersController {
     catch (error: unknown) {
       if (error instanceof Error) {
         logger.error(`${req.method} ${req.path}: Internal Server Error. ${error.message}`);
-
-        APIerror.status = "500";
-        APIerror.detail = error.message;
-        httpErrors.errors.push(APIerror);
-        res.status(500).send(httpErrors);
+        apiErrorGetPartners.detail = error.message;
+        apiErrorGetPartners.status = "500";
+        httpErrorsGetPartners.errors.push(apiErrorGetPartners);
+        res.status(500).send(httpErrorsGetPartners);
         return;
       } else {
         logger.error(`${req.method} ${req.path}: Internal Server Error.`);
