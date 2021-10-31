@@ -8,13 +8,13 @@ export class PartnersRoutes extends CommonRoutesConfig {
     }
 
     configureRoutes() {
-        this.app.route(`/partners`)
+        this.app.route(`/api/partners`)
             .get(PartnersController.getPartners);
 
         this.app.param('partnerId', function (req, res, next, partnerId) {
             next();
         });
-        this.app.route(`/partners/:partnerId`)
+        this.app.route(`/api/partners/:partnerId`)
             .get((req, res) => PartnersController.get(req, res));
 
         return this.app;

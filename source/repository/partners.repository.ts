@@ -66,11 +66,14 @@ export class PartnersRepository implements IPartnersRepository {
       sortedPartner.offices.forEach(office => {
         if (!partnerBasicInfo.locations) {
           partnerBasicInfo.locations = "'" + office.location + "'";
+          partnerBasicInfo.ranges = "'" + this.distanceFrom(coordinates, office.coordinates) + "'";
         }
         else {
           partnerBasicInfo.locations = partnerBasicInfo.locations + (", " + "'" + office.location + "'");
+          partnerBasicInfo.ranges = partnerBasicInfo.ranges + (", " + "'" + this.distanceFrom(coordinates, office.coordinates) + "'");
         }
       });
+
       partnersBasicInfo.push(partnerBasicInfo);
     });
 

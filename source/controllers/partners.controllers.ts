@@ -9,7 +9,7 @@ import { APIError } from '../models/APIError';
 
 @ApiPath({
   name: 'Partners',
-  path: '/partners',
+  path: '/api/partners',
   description: 'Partners endpoint',
 })
 class PartnersController {

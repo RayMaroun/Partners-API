@@ -6,7 +6,11 @@ dotenv.config();
 import logger from './logger';
 
 const app = express();
+const cors = require('cors');
+app.use(cors());
 const routes: Array<CommonRoutesConfig> = [new PartnersRoutes(app)];
+
+
 /** Server */
 const PORT: any = process.env.PORT ?? 6060;
 

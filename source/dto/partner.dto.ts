@@ -5,7 +5,7 @@ import { ApiModel, ApiModelProperty } from 'swagger-express-ts';
   description: 'Holds partner basic information',
 })
 export class PartnerDTO {
-  
+
   @ApiModelProperty({
     description: 'Partner Id',
     required: true,
@@ -23,4 +23,10 @@ export class PartnerDTO {
     required: true,
   })
   locations: string = '';
+
+  @ApiModelProperty({
+    description: 'Distance between user and partner',
+    required: true,
+  })
+  ranges: string = '';
 }
