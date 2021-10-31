@@ -62,3 +62,5 @@ API also runs a swagger endpoint for quick api docs, can be accessed on: `{BASE_
 > Improve the design.
 
 > Adding authentication and authorization.
+
+> Completing CRUD operations.
